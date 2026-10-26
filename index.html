@@ -85,7 +85,8 @@
       display: flex;
       gap: 20px;
       font-size: 13px;
-      font-weight: 700;
+      font-weight: 700;html, body { max-width: 100vw; overflow-x: hidden; } #scrollProgressBar { position: fixed; top: 0; left: 0; height: 2.5px; width: 0%; background: linear-gradient(90deg, #B85D3B 0%, #D97757 50%, #2E6B4E 100%); z-index: 9999; transition: width 60ms linear; } @keyframes kovaViewEnter { 0% { opacity: 0; transform: translateY(14px) scale(0.994); } 100% { opacity: 1; transform: translateY(0) scale(1); } } .kova-view-animate { animation: kovaViewEnter 460ms cubic-bezier(0.22, 1, 0.36, 1) forwards; } @keyframes kovaCardReveal { 0% { opacity: 0; transform: translateY(22px) scale(0.985); } 100% { opacity: 1; transform: translateY(0) scale(1); } } .kova-card-enter { opacity: 0; animation: kovaCardReveal 520ms cubic-bezier(0.22, 1, 0.36, 1) forwards; } .kova-tilt-card { position: relative; transform-style: preserve-3d; transition: transform 280ms cubic-bezier(0.22, 1, 0.36, 1), box-shadow 280ms cubic-bezier(0.22, 1, 0.36, 1), border-color 280ms ease; will-change: transform; } @media (hover: hover) and (pointer: fine) { .kova-tilt-card::before { content: ""; position: absolute; inset: 0; border-radius: inherit; pointer-events: none; z-index: 2; background: radial-gradient(380px circle at var(--mouse-x, 50%) var(--mouse-y, 50%), rgba(184, 93, 59, 0.13), transparent 65%); opacity: 0; transition: opacity 250ms ease; } .kova-tilt-card:hover::before { opacity: 1; } } .kova-sheen-btn { position: relative; overflow: hidden; } .kova-sheen-btn::after { content: ""; position: absolute; top: -50%; left: -60%; width: 45%; height: 200%; background: linear-gradient(90deg, transparent, rgba(255,255,255,0.22), transparent); transform: rotate(25deg); transition: left 550ms cubic-bezier(0.22, 1, 0.36, 1); pointer-events: none; } .kova-sheen-btn:hover::after { left: 130%; }
+      
       text-transform: uppercase;
       letter-spacing: 1px;
     }
