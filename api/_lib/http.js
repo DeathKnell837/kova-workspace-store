@@ -29,3 +29,19 @@ export function requireMethod(req, res, method) {
   json(res, 405, { error: "Method not allowed." });
   return false;
 }
+
+export function publicStoreOrigin() {
+  const previewOrigin = process.env.CONTEXT === "deploy-preview"
+    ? process.env.DEPLOY_PRIME_URL
+    : process.env.VERCEL_ENV === "preview" && process.env.VERCEL_URL
+      ? `https://${process.env.VERCEL_URL}`
+      : null;
+  const configuredOrigin = previewOrigin || process.env.STORE_BASE_URL;
+  if (!configuredOrigin) return null;
+  try {
+    const url = new URL(configuredOrigin);
+    return url.protocol === "https:" && !url.username && !url.password ? url.origin : null;
+  } catch {
+    return null;
+  }
+}

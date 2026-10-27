@@ -1,5 +1,5 @@
 import { db, createOrderNumber, safeEmail, safeText } from "./_lib/store.js";
-import { json, readJson, requireMethod } from "./_lib/http.js";
+import { json, publicStoreOrigin, readJson, requireMethod } from "./_lib/http.js";
 
 const BASE64 = (value) => Buffer.from(`${value}:`).toString("base64");
 
@@ -9,7 +9,8 @@ export default async function handler(req, res) {
     || process.env.STORE_SHIPPING_CONFIRMED !== "true"
     || process.env.STORE_POLICIES_CONFIRMED !== "true"
     || process.env.SUPPLIER_FULFILLMENT_CONFIRMED !== "true"
-    || !process.env.PAYMONGO_WEBHOOK_SECRET) {
+    || !process.env.PAYMONGO_WEBHOOK_SECRET
+    || !publicStoreOrigin()) {
     return json(res, 503, { error: "Online ordering is not open yet." });
   }
   const mode = process.env.PAYMONGO_MODE === "live" ? "live" : "test";
@@ -58,11 +59,8 @@ export default async function handler(req, res) {
     });
     await db("order_items", { method: "POST", body: items.map((item) => ({ order_id: order.id, ...item })) });
 
-    const previewOrigin = process.env.VERCEL_ENV === "preview" && process.env.VERCEL_URL
-      ? `https://${process.env.VERCEL_URL}`
-      : null;
-    const origin = previewOrigin || process.env.STORE_BASE_URL || "https://kova-workspace-store.vercel.app";
-    if (!/^https:\/\//i.test(origin)) return json(res, 503, { error: "Store URL is not configured securely." });
+    const origin = publicStoreOrigin();
+    if (!origin) return json(res, 503, { error: "Store URL is not configured securely." });
     const checkoutResponse = await fetch("https://api.paymongo.com/v2/checkout_sessions", {
       method: "POST",
       headers: { Authorization: `Basic ${BASE64(process.env.PAYMONGO_SECRET_KEY)}`, "Content-Type": "application/json" },

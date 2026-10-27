@@ -1,4 +1,4 @@
-import { json, requireMethod } from "./_lib/http.js";
+import { json, publicStoreOrigin, requireMethod } from "./_lib/http.js";
 
 export default function handler(req, res) {
   if (!requireMethod(req, res, "GET")) return;
@@ -12,6 +12,7 @@ export default function handler(req, res) {
     && process.env.STORE_POLICIES_CONFIRMED === "true"
     && process.env.SUPPLIER_FULFILLMENT_CONFIRMED === "true"
     && Number.isSafeInteger(shipping) && shipping >= 0
+    && Boolean(publicStoreOrigin())
     && Boolean(process.env.PAYMONGO_SECRET_KEY && process.env.PAYMONGO_WEBHOOK_SECRET && secretKeyMatchesMode);
   return json(res, 200, { checkoutEnabled: ready, currency: "PHP" });
 }

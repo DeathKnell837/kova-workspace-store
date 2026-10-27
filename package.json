@@ -2,5 +2,8 @@
   "name": "kova-workspace-store",
   "private": true,
   "type": "module",
-  "engines": { "node": ">=20" }
+  "engines": { "node": ">=20" },
+  "scripts": {
+    "build:netlify": "node scripts/build-netlify.mjs"
+  }
 }

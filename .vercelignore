@@ -1,0 +1,4 @@
+netlify/
+scripts/
+dist/
+netlify.toml
