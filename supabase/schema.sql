@@ -71,5 +71,5 @@ alter table public.order_items enable row level security;
 alter table public.payment_events enable row level security;
 
 -- No public policies. All writes and private order reads go through Vercel functions
--- using the server-only Supabase service role key.
+-- using a server-only Supabase secret key (or legacy service role key).
 revoke all on public.products, public.orders, public.order_items, public.payment_events from anon, authenticated;

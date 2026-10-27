@@ -1,4 +1,4 @@
-const required = ["SUPABASE_URL", "SUPABASE_SERVICE_ROLE_KEY"];
+const required = ["SUPABASE_URL", "SUPABASE_SECRET_KEY"];
 
 export function assertStoreConfig() {
   const missing = required.filter((key) => !process.env[key]);
@@ -10,8 +10,8 @@ export async function db(path, { method = "GET", body, prefer } = {}) {
   const response = await fetch(`${process.env.SUPABASE_URL}/rest/v1/${path}`, {
     method,
     headers: {
-      apikey: process.env.SUPABASE_SERVICE_ROLE_KEY,
-      Authorization: `Bearer ${process.env.SUPABASE_SERVICE_ROLE_KEY}`,
+      apikey: process.env.SUPABASE_SECRET_KEY,
+      Authorization: `Bearer ${process.env.SUPABASE_SECRET_KEY}`,
       "Content-Type": "application/json",
       ...(prefer ? { Prefer: prefer } : {}),
     },
