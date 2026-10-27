@@ -3,7 +3,7 @@ import { resolve } from "node:path";
 
 const root = process.cwd();
 const output = resolve(root, "dist");
-const publicFiles = ["index.html", "policies.html", "robots.txt", "sitemap.xml"];
+const publicFiles = ["index.html", "policies.html", "robots.txt", "sitemap.xml", "google13d0c0668cae1334.html"];
 
 await mkdir(output, { recursive: true });
 await rm(output, { recursive: true, force: true });
