@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://kova-workspace-store.netlify.app/sitemap.xml

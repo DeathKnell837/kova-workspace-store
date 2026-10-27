@@ -1,15 +1,16 @@
 # KOVA Workspace Store
 
-KOVA is being prepared as a Philippine desk-organization storefront. The collection and checkout remain disabled until product availability, supplier fulfillment, shipping charges, store policies, and merchant payment credentials are confirmed.
+KOVA is now taking an affiliate-first path for a zero-budget start. It is an editorial workspace guide, not a direct-sale dropshipping shop. The site currently has no affiliate approval or tracked product links, so it does not accept orders or represent products as available from KOVA.
 
 ## Commerce architecture
 
-- Static storefront in `index.html` and `storefront.js`.
-- Shared Vercel API handlers under `api/` for the catalog, checkout, PayMongo webhook, order tracking, and admin operations.
-- Netlify function wrappers under `netlify/functions/` serve the same `/api/*` routes. `netlify.toml` configures Node 20, and `scripts/build-netlify.mjs` copies only public files to `dist/`.
+- Public editorial pages in `index.html` and `guides/`, with `robots.txt` and `sitemap.xml` for search discovery. Pages make no earnings, testing, stock, or delivery guarantees.
+- `docs/quiet-launch-kit.md` contains researched launch guidance and post drafts that do not require the owner to appear on camera.
+- The earlier direct-sale backend remains dormant in `api/`, `netlify/functions/`, and Supabase. PayMongo checkout is disabled; the affiliate-first site does not use those endpoints.
+- Netlify reads `netlify.toml`; `scripts/build-netlify.mjs` publishes only the editorial site, its guides, policy page, robots file, and sitemap. It intentionally does not publish the old cart/order UI or admin desk.
 - Supabase Postgres schema in `supabase/schema.sql`; all tables have RLS enabled and no public policies. The Supabase secret key belongs only in server environment variables.
 - PayMongo v2 hosted checkout; payment state changes only after a signed webhook validated against the order number, checkout session, amount, and currency.
-- `/admin.html` provides a token-protected order desk for supplier handoff, tracking updates, and product management. Supplier orders are entered manually until a suitable supplier integration is confirmed.
+- Old direct-sale order/admin handlers are retained only in source pending any future product model decision; they are not published as site pages.
 
 ## Netlify deployment
 
@@ -23,4 +24,6 @@ KOVA is being prepared as a Philippine desk-organization storefront. The collect
 
 The Netlify publish folder contains only public HTML and JavaScript. API source files are bundled into server functions and are not copied into the static site. The Vercel API handlers remain available for the existing Vercel preview.
 
-See `docs/launch-checklist.md` and `docs/dropship-research.md` for prerequisites and current niche research.
+The remaining human step is applying to Lazada's affiliate program using accurate identity, payout, and tax information. After approval, provide KOVA with generated product tracking links so they can be reviewed and added. Never put account passwords, ID documents, or bank details in this repository.
+
+See `docs/launch-checklist.md`, `docs/dropship-research.md`, and `docs/quiet-launch-kit.md` for the current plan and research.
