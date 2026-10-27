@@ -24,6 +24,8 @@ KOVA is now taking an affiliate-first path for a zero-budget start. It is an edi
 
 The Netlify publish folder contains only public HTML and JavaScript. API source files are bundled into server functions and are not copied into the static site. The Vercel API handlers remain available for the existing Vercel preview.
 
-The remaining human step is applying to Lazada's affiliate program using accurate identity, payout, and tax information. After approval, provide KOVA with generated product tracking links so they can be reviewed and added. Never put account passwords, ID documents, or bank details in this repository.
+The remaining human step is applying to Lazada's affiliate program using accurate identity, payout, and tax information. After approval, register KOVA's website as a promotional media placement if Lazada requires it, and wait for that media placement to be approved before publishing affiliate links. The homepage currently shows editorial recommendations as pending and has no product purchase links. After the channel is approved, provide KOVA with generated product tracking links so they can be reviewed and added. Never put account passwords, ID documents, or bank details in this repository.
+
+The responsive homepage includes a no-signup setup finder, filters for workspace ideas, guide cards, FAQs, mobile navigation, and an affiliate disclosure. The setup finder runs locally in the browser and does not collect visitor information.
 
 See `docs/launch-checklist.md`, `docs/dropship-research.md`, and `docs/quiet-launch-kit.md` for the current plan and research.

@@ -5,7 +5,8 @@
 - [x] Choose a no-inventory, no-camera business model for the zero-budget start. KOVA is an editorial guide; it does not take payment or fulfill products.
 - [x] Publish three practical desk setup guides and add affiliate disclosure, search metadata, `robots.txt`, and `sitemap.xml`.
 - [ ] Rogie: apply directly to the [Lazada Philippines Affiliate Program](https://pages.lazada.com.ph/wow/i/ph/corp/affiliate-howitworks?hybrid=1). Use accurate legal identity, tax, and bank payout information on Lazada only. Program approval is not guaranteed.
-- [ ] After approval, generate tracked product links and send only those links to Codex. Do not send passwords, identity documents, or banking details.
+- [ ] Register KOVA's website as an affiliate promotional media placement in Lazada if required, and wait for Lazada to approve that placement before publishing promotional materials or affiliate links. Personal account review and website/media approval may be separate steps.
+- [ ] After both required approvals, generate tracked product links and send only those links to Codex. Do not send passwords, identity documents, or banking details.
 - [ ] Check each retailer listing, item specs, price, permitted images, and terms; then add a visible affiliate disclosure next to recommendations.
 - [ ] Publish optional written/static posts after links are live. No founder video or personal appearance is required. Organic traffic and earnings are not guaranteed.
 - [ ] Track clicks and commissions in the affiliate dashboard; the current Lazada overview lists a ₱1,200 minimum monthly payout threshold and bank transfer terms.
