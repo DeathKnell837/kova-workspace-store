@@ -14,7 +14,8 @@
 
 - [ ] Create/authorize a dedicated Supabase project for KOVA and run `supabase/schema.sql`.
 - [ ] Set Vercel server environment variables from `.env.example`; never expose server secrets in frontend variables. Keep `STORE_CHECKOUT_ENABLED=false` until all launch gates pass.
-- [ ] Create a PayMongo **test** key and webhook secret. Register `https://kova-workspace-store.vercel.app/api/paymongo-webhook` for `checkout_session.payment.paid`.
+- [ ] Create a PayMongo **test** key and webhook secret. For preview testing, register the current Vercel preview URL plus `/api/paymongo-webhook` for `checkout_session.payment.paid`; preview checkout returns to its own preview deployment.
+- [ ] For production, register `https://kova-workspace-store.vercel.app/api/paymongo-webhook` with the live webhook secret after the production payment setup is approved.
 - [ ] Set a long random admin token; keep it private. Use `/admin.html` to view orders and enter fulfillment/tracking details.
 - [ ] Configure and test buyer order tracking, checkout, email receipt, payment webhook, and supplier handoff using test mode.
 - [ ] Only after the seller account is approved, switch Vercel to the PayMongo live key and live webhook secret, set `PAYMONGO_MODE=live`, set a verified shipping fee, set `STORE_SHIPPING_CONFIRMED=true`, `STORE_POLICIES_CONFIRMED=true`, `SUPPLIER_FULFILLMENT_CONFIRMED=true`, and finally set `STORE_CHECKOUT_ENABLED=true`.

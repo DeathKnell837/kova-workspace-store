@@ -58,7 +58,10 @@ export default async function handler(req, res) {
     });
     await db("order_items", { method: "POST", body: items.map((item) => ({ order_id: order.id, ...item })) });
 
-    const origin = process.env.STORE_BASE_URL || "https://kova-workspace-store.vercel.app";
+    const previewOrigin = process.env.VERCEL_ENV === "preview" && process.env.VERCEL_URL
+      ? `https://${process.env.VERCEL_URL}`
+      : null;
+    const origin = previewOrigin || process.env.STORE_BASE_URL || "https://kova-workspace-store.vercel.app";
     if (!/^https:\/\//i.test(origin)) return json(res, 503, { error: "Store URL is not configured securely." });
     const checkoutResponse = await fetch("https://api.paymongo.com/v2/checkout_sessions", {
       method: "POST",
