@@ -9,7 +9,7 @@
 - [ ] After both required approvals, generate tracked product links and send only those links to Codex. Do not send passwords, identity documents, or banking details.
 - [ ] Check each retailer listing, item specs, price, permitted images, and terms; then add a visible affiliate disclosure next to recommendations.
 - [ ] Publish optional written/static posts after links are live. No founder video or personal appearance is required. Organic traffic and earnings are not guaranteed.
-- [ ] Track clicks and commissions in the affiliate dashboard; the current Lazada overview lists a ₱1,200 minimum monthly payout threshold and bank transfer terms.
+- [ ] Confirm the current Philippine payout methods, supported bank list, required tax details, and payout minimum in the signed-in Lazada dashboard or with affiliate support before entering payment details. Lazada's public affiliate pages currently conflict on bank-only vs. bank/PayPal payment and the minimum; do not guess.
 
 The direct-sale checklist below is retained for a possible future return to dropshipping. It is not the active plan and checkout must remain disabled.
 
