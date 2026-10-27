@@ -1,5 +1,11 @@
 let products = [];
-let cart = JSON.parse(localStorage.getItem("kova-cart") || "{}");
+let cart = {};
+try {
+  const savedCart = JSON.parse(localStorage.getItem("kova-cart") || "{}");
+  if (savedCart && typeof savedCart === "object" && !Array.isArray(savedCart)) {
+    cart = Object.fromEntries(Object.entries(savedCart).filter(([id, quantity]) => /^[0-9a-f-]{36}$/i.test(id) && Number.isInteger(quantity) && quantity > 0 && quantity <= 10));
+  }
+} catch { cart = {}; }
 let checkoutEnabled = false;
 let categoryFilter = "";
 let searchFilter = "";
@@ -82,12 +88,14 @@ function renderCart() {
 function addToCart(id) {
   const product = products.find((p) => p.id === id);
   if (!product || product.stock_status !== "available") return;
+  if ((cart[id] || 0) >= 10) return showStoreNotice("The maximum quantity per item is 10.");
   cart[id] = (cart[id] || 0) + 1;
   renderCart();
   toggleCart(true);
 }
 
 function changeQty(id, change) {
+  if (change > 0 && (cart[id] || 0) >= 10) return showStoreNotice("The maximum quantity per item is 10.");
   cart[id] = (cart[id] || 0) + change;
   if (cart[id] < 1) delete cart[id];
   renderCart();
