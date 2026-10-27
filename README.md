@@ -17,7 +17,7 @@ KOVA is being prepared as a Philippine desk-organization storefront. The collect
 2. Netlify reads `netlify.toml`: build command `npm run build:netlify`, publish directory `dist`, Node.js 20, and functions in `netlify/functions`.
 3. Set the server environment variables from `.env.example` in the Netlify project settings. Keep checkout and confirmation flags `false` until launch prerequisites are met. Never commit real keys or put server secrets in frontend variables.
 4. After deploying, set `STORE_BASE_URL` to the HTTPS `netlify.app` URL. Keep checkout disabled while setting this up.
-5. Once a dedicated KOVA Supabase project is approved, run `supabase/schema.sql` in it and add its URL and secret key as server-only variables in Netlify.
+5. The dedicated KOVA Supabase project is `kova-workspace-store` in Singapore. Its schema is applied; `SUPABASE_URL` and the production-only `SUPABASE_SECRET_KEY` are configured in Netlify. Never add the secret key to Git or frontend code.
 6. Once a PayMongo merchant account and test keys are available, register `<STORE_BASE_URL>/api/paymongo-webhook` for `checkout_session.payment.paid` and add the signing secret as a server-only variable.
 7. Complete `docs/launch-checklist.md`. Do not enable live checkout until stock, supplier fulfillment, shipping, policies, and merchant approval are confirmed.
 

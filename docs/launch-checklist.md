@@ -12,9 +12,9 @@
 
 ## Accounts and deployment
 
-- [ ] Create/authorize a dedicated Supabase project for KOVA and run `supabase/schema.sql`.
-- [ ] Set server environment variables from `.env.example` on the selected deployment platform; never expose server secrets in frontend variables. Keep `STORE_CHECKOUT_ENABLED=false` until all launch gates pass.
-- [ ] For Netlify production, set `STORE_BASE_URL` to its HTTPS site URL. Deploy previews use the preview URL automatically.
+- [x] Create a dedicated Supabase project for KOVA in the Singapore region and apply `supabase/schema.sql` with RLS enabled and no public policies.
+- [x] Configure Netlify production `SUPABASE_URL` and the secret `SUPABASE_SECRET_KEY`; configure `STORE_BASE_URL` as `https://kova-workspace-store.netlify.app`. Never expose server secrets in frontend variables.
+- [x] Verify the live catalog endpoint responds successfully and checkout remains disabled. Deploy previews use their preview URL automatically.
 - [ ] Create a PayMongo test key and webhook secret. Register `<STORE_BASE_URL>/api/paymongo-webhook` for `checkout_session.payment.paid`; keep checkout disabled until the full test journey works.
 - [ ] Set a long random admin token; keep it private. Use `/admin.html` to view orders and enter fulfillment/tracking details.
 - [ ] Configure and verify buyer order tracking, checkout, email receipt, payment webhook, and supplier handoff in test mode before launch.
@@ -23,3 +23,7 @@
 ## Current implementation boundary
 
 The supplier step is deliberately a manual order-desk handoff until KOVA has a supplier account or API that supports this custom storefront. COD is not enabled because no carrier or supplier account is connected. Do not accept live payments until product availability, shipping costs, business policies, and merchant approval are confirmed.
+
+## Current status
+
+The live Netlify site is `https://kova-workspace-store.netlify.app/`. The KOVA database is connected, but the catalog is empty because no supplier-confirmed items have been added. Checkout remains disabled. See `dropship-research.md` for the current zero-budget supplier assessment.
