@@ -62,7 +62,7 @@ function renderProducts() {
   }
   grid.innerHTML = shown.map((p) => {
     const photo = p.image_url && /^https:\/\//i.test(p.image_url) ? p.image_url : "";
-    return `<article class="card"><div class="product-image">${photo ? `<img loading="lazy" src="${escapeHtml(photo)}" alt="${escapeHtml(p.name)}">` : '<div class="no-photo">KOVA</div>'}<span class="tag">${escapeHtml(p.category)}</span><button class="add" aria-label="Add ${escapeHtml(p.name)} to bag" onclick="addToCart('${escapeHtml(p.id)}')">+</button></div><div class="product-info"><button class="product-title" onclick="openProduct('${escapeHtml(p.id)}')">${escapeHtml(p.name)}</button><div class="product-sub">${escapeHtml(p.description)}</div><div class="price">${peso(p.price_php)}</div></div></article>`;
+    return `<article class="card"><div class="product-image">${photo ? `<img loading="lazy" src="${escapeHtml(photo)}" alt="${escapeHtml(p.name)}">` : '<div class="no-photo">DeskLaya</div>'}<span class="tag">${escapeHtml(p.category)}</span><button class="add" aria-label="Add ${escapeHtml(p.name)} to bag" onclick="addToCart('${escapeHtml(p.id)}')">+</button></div><div class="product-info"><button class="product-title" onclick="openProduct('${escapeHtml(p.id)}')">${escapeHtml(p.name)}</button><div class="product-sub">${escapeHtml(p.description)}</div><div class="price">${peso(p.price_php)}</div></div></article>`;
   }).join("");
 }
 
@@ -78,7 +78,7 @@ function renderCart() {
   const count = lines.reduce((sum, item) => sum + item.quantity, 0);
   document.getElementById("count").textContent = `(${count})`;
   document.getElementById("drawer-count").textContent = `(${count})`;
-  document.getElementById("cart-list").innerHTML = lines.length ? lines.map((p) => `<div class="cart-row"><div class="cart-line-image">KOVA</div><div><h3>${escapeHtml(p.name)}</h3><small>${peso(p.price_php)}</small><div class="qty"><button onclick="changeQty('${escapeHtml(p.id)}',-1)" aria-label="Remove one">−</button><span>${p.quantity}</span><button onclick="changeQty('${escapeHtml(p.id)}',1)" aria-label="Add one">+</button></div></div><strong>${peso(p.price_php * p.quantity)}</strong></div>`).join("") : '<div class="empty">Your bag is empty.</div>';
+  document.getElementById("cart-list").innerHTML = lines.length ? lines.map((p) => `<div class="cart-row"><div class="cart-line-image">DeskLaya</div><div><h3>${escapeHtml(p.name)}</h3><small>${peso(p.price_php)}</small><div class="qty"><button onclick="changeQty('${escapeHtml(p.id)}',-1)" aria-label="Remove one">−</button><span>${p.quantity}</span><button onclick="changeQty('${escapeHtml(p.id)}',1)" aria-label="Add one">+</button></div></div><strong>${peso(p.price_php * p.quantity)}</strong></div>`).join("") : '<div class="empty">Your bag is empty.</div>';
   const subtotal = lines.reduce((sum, p) => sum + p.price_php * p.quantity, 0);
   document.getElementById("subtotal").textContent = peso(subtotal);
   localStorage.setItem("kova-cart", JSON.stringify(cart));

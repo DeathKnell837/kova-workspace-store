@@ -1,4 +1,4 @@
--- KOVA store schema. Run only in the dedicated KOVA Supabase project.
+-- DeskLaya store schema. Run only in the dedicated DeskLaya Supabase project.
 create extension if not exists pgcrypto;
 
 create table if not exists public.products (
